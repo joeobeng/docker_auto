@@ -1,15 +1,19 @@
 #!/bin/bash
 #script to automate docker image build
 #Author: Prof Elvis N
-#Maintener: Sr Eng Rudolph
+#Maintainer: Sr Eng Rudolph
 #Company: Etech Consulting LLC
 today=`date`
 user=`whoami`
-source version.env
+dockeruser=yourcase
+password=yourcase
+dockerrepo=yourcase
+versions=( 18.04 20.04 21.10 16.04 22.04 )
 for i in ${versions[@]}; do
-docker build -t etechteam2/etechapp:$i .
-docker push etechteam2/etechapp:$i
-echo "running a docker container with etechteam2/etecapp:$i"
+docker build -t $dockeruser/$dockerrepo:$i --build-arg versions=groovy .
+docker login -u $dockeruser -p $password
+docker push $dockeruser/$dockerrepo:$i
+echo "$user is running a docker container with etechteam2/etecapp:$i on $today"
 sleep 5
-docker run --name etechApp -dp 80:80 etechteam2/etechapp:$i
+echo " Images have been uploaded to your dockerhub repository !! "
 done
