@@ -5,9 +5,9 @@
 #Company: Etech Consulting LLC
 today=`date`
 user=`whoami`
-dockeruser=yourcase
-password=yourcase
-dockerrepo=yourcase
+dockeruser=etechteam2
+password=Temporary123@.
+dockerrepo=etechapp
 versions=( 18.04 20.04 21.10 16.04 22.04 )
 for i in ${versions[@]}; do
 docker build -t $dockeruser/$dockerrepo:$i --build-arg versions=groovy .
