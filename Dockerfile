@@ -1,4 +1,4 @@
 ARG versions
-FROM ubuntu:$versions
-RUN apt update && apt install nginx
-EXPOSE 80 
+FROM ubuntu:${versions}
+MAINTAINER Rudolph Nfor
+EXPOSE 80
